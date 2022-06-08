@@ -5,7 +5,7 @@ function UsersPage({ users }) {
 
     // const fetchUsers = async () => {
     //     setUsers([]);
-    //     const response = await fetch("http://localhost:3000/api/users");
+    //     const response = await fetch("https://abdo-next.vercel.app/api/users");
     //     const data = await response.json();
     //     setUsers(data);
     // };
@@ -13,7 +13,7 @@ function UsersPage({ users }) {
     const submitUser = async () => {
         if (users.length) {
             console.log(JSON.stringify({ ...user, userId: users.length + 1 }));
-            const response = await fetch("http://localhost:3000/api/users", {
+            const response = await fetch("https://abdo-next.vercel.app/api/users", {
                 method: "POST",
                 body: JSON.stringify({ ...user, userId: users.length + 1 }),
                 headers: {
@@ -30,7 +30,7 @@ function UsersPage({ users }) {
 
     const deleteUser = async (userId) => {
         const response = await fetch(
-            `http://localhost:3000/api/users/${userId}`,
+            `https://abdo-next.vercel.app/api/users/${userId}`,
             {
                 method: "DELETE",
             }
@@ -82,7 +82,7 @@ function UsersPage({ users }) {
 export default UsersPage;
 
 export async function getServerSideProps() {
-    const response = await fetch("http://localhost:3000/api/users");
+    const response = await fetch("https://abdo-next.vercel.app/api/users");
     const users = await response.json();
     return {
         props: { users },
